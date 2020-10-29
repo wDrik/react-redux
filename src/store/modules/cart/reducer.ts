@@ -1,4 +1,6 @@
 import { Reducer } from "react";
+import produce from 'immer';
+
 import { ICartState } from './types';
 
 const INITIAL_STATE: ICartState = {
@@ -10,14 +12,12 @@ const cart: Reducer<ICartState, any> = (state = INITIAL_STATE, action) => {
     case 'ADD_PRODUCT_TO_CART': {
       const { product } = action.payload;
 
-      state.items.push({
-        product,
-        quantity: 1
+      return produce(state, draft => {
+        draft.items.push({
+          product,
+          quantity: 1
+        })
       })
-
-      return state;
-
-      break;
     }
     default: {
       return state;

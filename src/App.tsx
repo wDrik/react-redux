@@ -10,6 +10,9 @@ function App() {
   return (
     <Provider store={store}>
       <Catalog />
+      <br />
+      <br />
+      <br />
       <Cart />
     </Provider>
   );
